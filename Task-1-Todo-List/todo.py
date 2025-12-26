@@ -1,58 +1,59 @@
-# task1---To Do list
-tasks = []
+# Task1 To-Do List Program 
 
-def show_menu():
-    print("\n--- TO DO LIST ---")
-    print("1. Add Task")
-    print("2. View Task")
-    print("3. Complete Task")
-    print("4. Update Task")
-    print("5. Delete Task")
-    print("6. Exit")
-
-def add_task():
-    task = input("Enter task: ")
-    tasks.append(task)
-    print("Task Added")
-
-def view_task():
-    if not tasks:
-        print("No tasks")
-    else:
-        for i in range(len(tasks)):
-            print(i + 1, tasks[i])
-
-def complete_task():
-    view_task()
-    n = int(input("Task number completed: "))
-    print("Task Completed:", tasks[n-1])
-
-def update_task():
-    view_task()
-    n = int(input("Task number to update: "))
-    tasks[n-1] = input("New task: ")
-
-def delete_task():
-    view_task()
-    n = int(input("Task number to delete: "))
-    tasks.pop(n-1)
+tasks = []  
 
 while True:
-    show_menu()
-    ch = input("Enter choice: ")
 
-    if ch == "1":
-        add_task()
-    elif ch == "2":
-        view_task()
-    elif ch == "3":
-        complete_task()
-    elif ch == "4":
-        update_task()
-    elif ch == "5":
-        delete_task()
-    elif ch == "6":
-        print("Thank You 😊")
+    print("\n--- TO DO LIST MENU ---")
+    print("1. Add Task")
+    print("2. View Tasks")
+    print("3. Update Task")
+    print("4. Delete Task")
+    print("5. Exit")
+
+
+    choice = input("Enter your choice: ")
+
+  
+    if choice == "1":
+        task = input("Enter task name: ")
+        tasks.append(task)
+        print("Task added successfully!")
+
+    
+    elif choice == "2":
+        if not tasks:
+            print("No tasks available")
+        else:
+            print("\nYour Tasks:")
+            for i in range(len(tasks)):
+                print(i + 1, tasks[i])
+
+   
+    elif choice == "3":
+        if not tasks:
+            print("No tasks to update")
+        else:
+            for i in range(len(tasks)):
+                print(i + 1, tasks[i])
+            num = int(input("Enter task number to update: "))
+            tasks[num - 1] = input("Enter new task: ")
+            print("Task updated successfully!")
+
+    elif choice == "4":
+        if not tasks:
+            print("No tasks to delete")
+        else:
+            for i in range(len(tasks)):
+                print(i + 1, tasks[i])
+            num = int(input("Enter task number to delete: "))
+            tasks.pop(num - 1)
+            print("Task deleted successfully!")
+
+    elif choice == "5":
+        print("Thank you! Program ended 😊")
         break
     else:
-        print("Wrong choice")
+        print("Invalid choice, try again")
+
+
